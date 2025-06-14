@@ -1,39 +1,42 @@
-export interface ShopifyProductImageNode {
-  url: string;
+export interface ShopifyProductsResponse {
+  Products?: {
+    body?: {
+      data?: {
+        products?: {
+          edges?: ProductEdge[];
+        };
+      };
+    };
+  };
 }
 
-export interface ShopifyProductImageEdge {
-  node: ShopifyProductImageNode;
+export interface ProductEdge {
+  node: ProductNode;
 }
 
-export interface ShopifyProductImages {
-  edges: ShopifyProductImageEdge[];
-}
-
-export interface ShopifyProductNode {
+export interface ProductNode {
   id: string;
   title: string;
   description: string;
-  images: ShopifyProductImages;
+  images: {
+    edges: ImageEdge[];
+  };
+  variants: {
+    edges: VariantEdge[];
+  };
 }
 
-export interface ShopifyProductEdge {
-  node: ShopifyProductNode;
+export interface ImageEdge {
+  node: {
+    url: string;
+  };
 }
 
-export interface ShopifyProducts {
-  edges: ShopifyProductEdge[];
-}
-
-export interface ShopifyData {
-  products: ShopifyProducts;
-}
-
-export interface ShopifyBody {
-  data: ShopifyData;
-}
-
-export interface ShopifyResponse {
-  status: number;
-  body: ShopifyBody;
+export interface VariantEdge {
+  node: {
+    price: {
+      amount: string;
+      currencyCode: string;
+    };
+  };
 }

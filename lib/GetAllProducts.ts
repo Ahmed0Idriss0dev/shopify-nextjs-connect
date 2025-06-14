@@ -16,6 +16,16 @@ export async function getAllProducts() {
                   }
                 }
               }
+            variants(first: 1) {
+        edges {
+          node {
+            price {
+              amount
+              currencyCode
+            }
+          }
+        }
+      }
               
             }
           }
