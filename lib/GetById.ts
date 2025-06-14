@@ -1,16 +1,16 @@
-import { shopifyFetch } from "./Shopify";
+import { shopifyClient } from "./Shopify";
 type idtype={
  id:string
 }
-export async function GETbyId({id}:idtype) {
-  return shopifyFetch({
-    query: `{
-     node(id: "gid://shopify/Product/9961705767229") {
+export async function GetById({id}:idtype) {
+  return shopifyClient({
+    query: `query {
+      node(id: "gid://shopify/Product/${id}") {
     ... on Product {
       id
       title
       description
-      images(first: 1) {
+      images(first: 2) {
         edges {
           node {
             url
@@ -20,13 +20,17 @@ export async function GETbyId({id}:idtype) {
       variants(first: 1) {
         edges {
           node {
-            price
+            price {
+              amount
+              currencyCode
+            }
           }
         }
       }
     }
   }
 }
+
 
 `
   });

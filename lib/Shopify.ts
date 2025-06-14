@@ -1,4 +1,4 @@
-export async function shopifyFetch({ query, variables }:{query:unknown, variables?:unknown}) {
+export async function shopifyClient({ query, variables }:{query:unknown, variables?:unknown}) {
   const endpoint = process.env.NEXT_PUPLIC_SHOPIFY_STORE_DOMAIN as string
   const key = process.env.NEXT_PUPLIC_STOREFRONT_ACCESS_TOKEN  as string;
 

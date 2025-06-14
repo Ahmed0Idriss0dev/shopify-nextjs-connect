@@ -1,7 +1,7 @@
-import { shopifyFetch } from "./Shopify";
+import { shopifyClient } from "./Shopify";
 
 export async function getAllProducts() {
-  return shopifyFetch({
+  return shopifyClient({
     query: `{
         products(sortKey: TITLE, first: 3) {
           edges{
