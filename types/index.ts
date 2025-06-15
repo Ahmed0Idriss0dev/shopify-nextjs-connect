@@ -1,5 +1,4 @@
 export interface ShopifyProductsResponse {
-  Products?: {
     body?: {
       data?: {
         products?: {
@@ -8,14 +7,14 @@ export interface ShopifyProductsResponse {
       };
     };
   };
-}
+
 
 export interface ProductEdge {
   node: ProductNode;
 }
 
 export interface ProductNode {
-  id: string;
+  handle: string;
   title: string;
   description: string;
   images: {

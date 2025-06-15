@@ -1,37 +1,11 @@
-import { shopifyClient } from "./Shopify";
+import { GETBYHANDLE } from "@/graphQl";
+import { shopifyClient } from "./shopifyClient";
 type idtype={
  id:string
 }
-export async function GetById({id}:idtype) {
+export async function getByHandle({id}:idtype) {
   return shopifyClient({
-    query: `query {
-      node(id: "gid://shopify/Product/${id}") {
-    ... on Product {
-      id
-      title
-      description
-      images(first: 2) {
-        edges {
-          node {
-            url
-          }
-        }
-      }
-      variants(first: 1) {
-        edges {
-          node {
-            price {
-              amount
-              currencyCode
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-
-`
+    query:GETBYHANDLE ,
+    variables:{handle:id}
   });
 }
